@@ -58,3 +58,8 @@ echo "Please check that the real time"
 echo "clock is installed correctly"
 echo "and try again"
 fi
+
+
+
+#cd ~/Downloads
+#wget && bash rtc
