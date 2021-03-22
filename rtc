@@ -38,13 +38,13 @@ echo;echo
 read -p "Do you see 68 in the info listed above? y/n " ANS1
 echo
 if [ $ANS1 = 'y' ] || [ $ANS1 = 'Y' ]; then
-sudo modprobe rtc-ds3231
-echo "ds3231 0x68" | sudo tee -a /sys/class/i2c-adapter/i2c-1/new_device
+sudo modprobe rtc-ds1307
+echo "ds1307 0x68" | sudo tee -a /sys/class/i2c-adapter/i2c-1/new_device
 sudo hwclock -w
-echo rtc-ds3231 | sudo tee -a /etc/modules
+echo rtc-ds1307 | sudo tee -a /etc/modules
 
 sudo sed -i 's/exit\ 0//' /etc/rc.local
-echo "echo ds3231 0x68 > /sys/class/i2c-adapter/i2c-1/new_device" | sudo tee -a /etc/rc.local > /dev/null 2>&1
+echo "echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device" | sudo tee -a /etc/rc.local > /dev/null 2>&1
 echo "sudo hwclock -s" | sudo tee -a /etc/rc.local > /dev/null 2>&1
 echo "date" | sudo tee -a /etc/rc.local > /dev/null 2>&1
 echo "exit 0" | sudo tee -a /etc/rc.local > /dev/null 2>&1
